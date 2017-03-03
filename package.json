@@ -1,0 +1,127 @@
+{
+    "name": "shell-launcher",
+    "displayName": "Shell launcher",
+    "description": "Easily launch multiple shell configurations in the terminal",
+    "version": "0.1.0",
+    "publisher": "Tyriar",
+    "icon": "images/icon.png",
+    "engines": {
+        "vscode": "^1.10.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:shellLauncher.launch"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+            "command": "shellLauncher.launch",
+            "title": "Shell Launcher: Launch"
+        }],
+        "configuration": {
+            "title": "Shell Launcher configuration",
+            "properties": {
+                "shellLauncher.shells.osx": {
+                    "type": "array",
+                    "description": "A list of shell configurations for macOS",
+                    "default": [
+                        {
+                            "shell": "/bin/bash",
+                            "label": "bash"
+                        },
+                        {
+                            "shell": "/bin/zsh",
+                            "label": "zsh"
+                        },
+                        {
+                            "shell": "zsh",
+                            "args": ["-l"],
+                            "label": "zsh login shell"
+                        },
+                        {
+                            "shell": "bash",
+                            "args": ["-l"],
+                            "label": "bash login shell"
+                        }
+                    ],
+                    "items": {
+                        "shell": "string",
+                        "args": "string[]",
+                        "label": "string"
+                    }
+                },
+                "shellLauncher.shells.linux": {
+                    "type": "array",
+                    "description": "A list of shell configurations for Linux",
+                    "default": [
+                        {
+                            "shell": "/bin/bash",
+                            "label": "bash"
+                        },
+                        {
+                            "shell": "/bin/zsh",
+                            "label": "zsh"
+                        },
+                        {
+                            "shell": "zsh",
+                            "args": ["-l"],
+                            "label": "zsh login shell"
+                        },
+                        {
+                            "shell": "bash",
+                            "args": ["-l"],
+                            "label": "bash login shell"
+                        }
+                    ],
+                    "items": {
+                        "shell": "string",
+                        "args": "string[]",
+                        "label": "string"
+                    }
+                },
+                "shellLauncher.shells.windows": {
+                    "type": "array",
+                    "description": "A list of shell configurations for Windows",
+                    "default": [
+                        {
+                            "shell": "C:\\Windows\\sysnative\\cmd.exe",
+                            "label": "cmd"
+                        },
+                        {
+                            "shell": "C:\\Windows\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe",
+                            "label": "PowerShell"
+                        },
+                        {
+                            "shell": "C:\\Program Files\\Git\\bin\\bash.exe",
+                            "label": "Git bash"
+                        },
+                        {
+                            "shell": "C:\\Windows\\sysnative\\bash.exe",
+                            "label": "WSL Bash"
+                        }
+                    ],
+                    "items": {
+                        "shell": "string",
+                        "args": "string[]",
+                        "label": "string"
+                    }
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
