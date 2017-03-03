@@ -20,11 +20,13 @@ All shells can be user configured in your [settings.json](https://code.visualstu
 
 Here is an example shell which will launch `bash` as a login shell (`bash -l`) on Linux:
 
-```js
-"shellLauncher.shells.linux": [
+```json
 {
-  "shell": "bash",
-  "args": ["-l"],
-  "label": "bash login shell"
-},
+  "shellLauncher.shells.linux": [
+  
+    "shell": "bash",
+    "args": ["-l"],
+    "label": "bash login shell"
+  }
+}
 ```
