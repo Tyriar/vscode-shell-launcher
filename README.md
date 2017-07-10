@@ -23,10 +23,11 @@ Here is an example shell which will launch `bash` as a login shell (`bash -l`) o
 ```json
 {
   "shellLauncher.shells.linux": [
-  
-    "shell": "bash",
-    "args": ["-l"],
-    "label": "bash login shell"
-  }
+    {
+      "shell": "bash",
+      "args": ["-l"],
+      "label": "bash login shell"
+    }
+  ]
 }
 ```
