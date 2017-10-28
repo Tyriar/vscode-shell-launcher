@@ -93,11 +93,11 @@
                     "description": "A list of shell configurations for Windows",
                     "default": [
                         {
-                            "shell": "C:\\Windows\\sysnative\\cmd.exe",
+                            "shell": "C:\\Windows\\System32\\cmd.exe",
                             "label": "cmd"
                         },
                         {
-                            "shell": "C:\\Windows\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe",
+                            "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                             "label": "PowerShell"
                         },
                         {
@@ -105,7 +105,7 @@
                             "label": "Git bash"
                         },
                         {
-                            "shell": "C:\\Windows\\sysnative\\bash.exe",
+                            "shell": "C:\\Windows\\System32\\bash.exe",
                             "label": "WSL Bash"
                         }
                     ],
