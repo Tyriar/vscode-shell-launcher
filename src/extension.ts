@@ -7,6 +7,7 @@ interface ShellConfig {
     shell: string;
     args?: string[];
     label?: string;
+    launchNamed?: string;
 }
 
 interface ShellLauncherConfig {
@@ -57,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
         });
         vscode.window.showQuickPick(items, options).then(item => {
             const shell = shells.filter(c => getShellLabel(c) === item.label)[0];
-            const terminal = vscode.window.createTerminal(undefined, shell.shell, shell.args);
+            const terminal = vscode.window.createTerminal(shell.launchNamed, shell.shell, shell.args);
             terminal.show();
         });
     });
