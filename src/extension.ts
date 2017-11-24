@@ -1,6 +1,7 @@
 'use strict';
 
 import * as os from 'os';
+import * as fs from 'fs';
 import * as vscode from 'vscode';
 
 interface ShellConfig {
@@ -49,7 +50,14 @@ export function activate(context: vscode.ExtensionContext) {
         const options: vscode.QuickPickOptions = {
             placeHolder: 'Select the shell to launch'
         }
-        const items: vscode.QuickPickItem[] = shells.map(s => {
+        const items: vscode.QuickPickItem[] = shells.filter(s => {
+            try {
+                fs.accessSync(s.shell, fs.constants.R_OK | fs.constants.X_OK);
+            } catch {
+                return false;
+            }
+            return true;
+        }).map(s => {
             return {
                 label: getShellLabel(s),
                 description: getShellDescription(s)
