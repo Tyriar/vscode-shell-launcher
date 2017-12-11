@@ -24,7 +24,7 @@ Do the following to bind the Shell Launcher command to CTRL+SHIFT+T.
 }]
 ```
 
-3\. Save keybindings.json, hit CTRL+SHFIT+T and the Shell Launcher will open.
+3\. Save keybindings.json, hit CTRL+SHIFT+T and the Shell Launcher will open.
 
 ## Settings
 
@@ -33,6 +33,13 @@ All shells can be user configured in your [settings.json](https://code.visualstu
 - `shellLauncher.shells.linux`: For Linux
 - `shellLauncher.shells.osx`: For macOS
 - `shellLauncher.shells.windows`: For Window
+
+When creating a shell configuration, the path to the executable must be defined. Other values are optional and will cause changes in the way the UI elements are presented. 
+
+- shell: Path to the executable that launches the shell
+- args: (Optional) An array of arguments to be passed to the shell on startup
+- label: (Optional) Displayed in the shellLauncher dropdown menu
+- launchName: (Optional) Displayed in the terminal dropdown menu, note that this is static and replaces the default terminal name that changes based on the program being run
 
 Here is an example shell which will launch `bash` as a login shell (`bash -l`) on Linux:
 
