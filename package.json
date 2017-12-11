@@ -56,7 +56,8 @@
                     "items": {
                         "shell": "string",
                         "args": "string[]",
-                        "label": "string"
+                        "label": "string",
+                        "launchName": "string"
                     }
                 },
                 "shellLauncher.shells.linux": {
@@ -85,7 +86,8 @@
                     "items": {
                         "shell": "string",
                         "args": "string[]",
-                        "label": "string"
+                        "label": "string",
+                        "launchName": "string"
                     }
                 },
                 "shellLauncher.shells.windows": {
@@ -112,7 +114,8 @@
                     "items": {
                         "shell": "string",
                         "args": "string[]",
-                        "label": "string"
+                        "label": "string",
+                        "launchName": "string"
                     }
                 }
             }
