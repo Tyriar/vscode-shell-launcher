@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.6
+
+- Fixed regression where shells from `$PATH` would not be picked up [#14](https://github.com/Tyriar/vscode-shell-launcher/issues/14) via [@Tyriar](https://github.com/Tyriar)
+
 ## 0.1.5
 - Added the `launchName` setting which allows naming of terminal instances [#10](https://github.com/Tyriar/vscode-shell-launcher/pull/10) via [@Jared-Miller](https://github.com/Jared-Miller)
 - Shell paths are now validated before being displayed in the picker [#11](https://github.com/Tyriar/vscode-shell-launcher/pull/11) via [@Jared-Miller](https://github.com/Jared-Miller)
