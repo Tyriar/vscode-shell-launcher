@@ -1,6 +1,7 @@
 'use strict';
 
 import * as os from 'os';
+import * as path from 'path';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
 
@@ -52,6 +53,10 @@ export function activate(context: vscode.ExtensionContext) {
             placeHolder: 'Select the shell to launch'
         }
         const items: vscode.QuickPickItem[] = shells.filter(s => {
+            // If the basename is the same assume it's being pulled from the PATH
+            if (path.basename(s.shell) === s.shell) {
+                return true;
+            } 
             try {
                 fs.accessSync(s.shell, fs.constants.R_OK | fs.constants.X_OK);
             } catch {
