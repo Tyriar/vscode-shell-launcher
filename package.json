@@ -23,10 +23,12 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "shellLauncher.launch",
-            "title": "Shell Launcher: Launch"
-        }],
+        "commands": [
+            {
+                "command": "shellLauncher.launch",
+                "title": "Shell Launcher: Launch"
+            }
+        ],
         "configuration": {
             "title": "Shell Launcher configuration",
             "properties": {
@@ -44,12 +46,16 @@
                         },
                         {
                             "shell": "zsh",
-                            "args": ["-l"],
+                            "args": [
+                                "-l"
+                            ],
                             "label": "zsh login shell"
                         },
                         {
                             "shell": "bash",
-                            "args": ["-l"],
+                            "args": [
+                                "-l"
+                            ],
                             "label": "bash login shell"
                         }
                     ],
@@ -57,7 +63,8 @@
                         "shell": "string",
                         "args": "string[]",
                         "label": "string",
-                        "launchName": "string"
+                        "launchName": "string",
+                        "cwd": "string"
                     }
                 },
                 "shellLauncher.shells.linux": {
@@ -74,12 +81,16 @@
                         },
                         {
                             "shell": "zsh",
-                            "args": ["-l"],
+                            "args": [
+                                "-l"
+                            ],
                             "label": "zsh login shell"
                         },
                         {
                             "shell": "bash",
-                            "args": ["-l"],
+                            "args": [
+                                "-l"
+                            ],
                             "label": "bash login shell"
                         }
                     ],
@@ -87,7 +98,8 @@
                         "shell": "string",
                         "args": "string[]",
                         "label": "string",
-                        "launchName": "string"
+                        "launchName": "string",
+                        "cwd": "string"
                     }
                 },
                 "shellLauncher.shells.windows": {
@@ -115,7 +127,8 @@
                         "shell": "string",
                         "args": "string[]",
                         "label": "string",
-                        "launchName": "string"
+                        "launchName": "string",
+                        "cwd": "string"
                     }
                 }
             }
