@@ -67,14 +67,15 @@ export function activate(context: vscode.ExtensionContext) {
         }).map(s => {
             return {
                 label: getShellLabel(s),
-                description: getShellDescription(s)
+                description: getShellDescription(s),
+                _shell: s
             };
         });
         vscode.window.showQuickPick(items, options).then(item => {
             if (!item) {
                 return;
             }
-            const shell = shells.filter(c => getShellLabel(c) === item.label)[0];
+            const shell = item['_shell'];
             const terminalOptions = {
                 cwd: shell.cwd,
                 name: shell.launchName,
