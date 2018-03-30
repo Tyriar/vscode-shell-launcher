@@ -76,7 +76,7 @@ export function activate(context: vscode.ExtensionContext) {
                 return;
             }
             const shell = item['_shell'];
-            const terminalOptions = {
+            const terminalOptions: vscode.TerminalOptions = {
                 cwd: shell.cwd,
                 name: shell.launchName,
                 shellPath: shell.shell,
