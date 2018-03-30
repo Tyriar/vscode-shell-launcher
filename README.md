@@ -40,6 +40,7 @@ When creating a shell configuration, the path to the executable must be defined.
 - args: (Optional) An array of arguments to be passed to the shell on startup
 - label: (Optional) Displayed in the shellLauncher dropdown menu
 - launchName: (Optional) Displayed in the terminal dropdown menu, note that this is static and replaces the default terminal name that changes based on the program being run
+- cwd: (Optional) A path for the current working directory to be used for the terminal
 
 Here is an example shell which will launch `bash` as a login shell (`bash -l`) on Linux:
 
