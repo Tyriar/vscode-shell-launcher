@@ -21,6 +21,10 @@ interface ShellLauncherConfig {
     };
 }
 
+interface ShellQuickPickItem extends vscode.QuickPickItem {
+    _shell: ShellConfig;
+}
+
 function getShells(): ShellConfig[] {
     const config = <ShellLauncherConfig>vscode.workspace.getConfiguration().get('shellLauncher');
     const shells = config.shells;
@@ -53,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
         const options: vscode.QuickPickOptions = {
             placeHolder: 'Select the shell to launch'
         }
-        const items: vscode.QuickPickItem[] = shells.filter(s => {
+        const items: ShellQuickPickItem[] = shells.filter(s => {
             // If the basename is the same assume it's being pulled from the PATH
             if (path.basename(s.shell) === s.shell) {
                 return true;
@@ -67,14 +71,15 @@ export function activate(context: vscode.ExtensionContext) {
         }).map(s => {
             return {
                 label: getShellLabel(s),
-                description: getShellDescription(s)
+                description: getShellDescription(s),
+                _shell: s
             };
         });
         vscode.window.showQuickPick(items, options).then(item => {
             if (!item) {
                 return;
             }
-            const shell = shells.filter(c => getShellLabel(c) === item.label)[0];
+            const shell = item._shell;
             const terminalOptions: vscode.TerminalOptions = {
                 cwd: shell.cwd,
                 name: shell.launchName,
