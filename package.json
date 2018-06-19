@@ -2,7 +2,7 @@
     "name": "shell-launcher",
     "displayName": "Shell launcher",
     "description": "Easily launch multiple shell configurations in the terminal",
-    "version": "0.1.6",
+    "version": "0.2.0",
     "publisher": "Tyriar",
     "icon": "images/icon.png",
     "bugs": {

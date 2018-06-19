@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.2.0
+
+- Added a `cwd` override option [#17](https://github.com/Tyriar/vscode-shell-launcher/pull/17) via [@fabiospampinato](https://github.com/fabiospampinato)
+- Fix bug that would not allow launching of shells that have duplicate labels [#18](https://github.com/Tyriar/vscode-shell-launcher/pull/18) via [@fabiospampinato](https://github.com/fabiospampinato)
+
 ## 0.1.6
 
 - Fixed regression where shells from `$PATH` would not be picked up [#14](https://github.com/Tyriar/vscode-shell-launcher/issues/14) via [@Tyriar](https://github.com/Tyriar)
