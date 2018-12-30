@@ -58,6 +58,13 @@ export function activate(context: vscode.ExtensionContext) {
             placeHolder: 'Select the shell to launch'
         }
         const items: ShellQuickPickItem[] = shells.filter(s => {
+            // Resolve environment variables
+            if (os.platform() === 'win32') {
+                s.shell = s.shell.replace(/%([^%]+)%/g, (_, name) => process.env[name]);
+            } else {
+                s.shell = s.shell.replace(/\${([^\$]+)}/g, (_, name) => process.env[name]);
+                s.shell = s.shell.replace(/\$([^\$\/]+)/g, (_, name) => process.env[name]);
+            }
             // If the basename is the same assume it's being pulled from the PATH
             if (path.basename(s.shell) === s.shell) {
                 return true;
