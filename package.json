@@ -2,7 +2,7 @@
     "name": "shell-launcher",
     "displayName": "Shell launcher",
     "description": "Easily launch multiple shell configurations in the terminal",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "publisher": "Tyriar",
     "icon": "images/icon.png",
     "bugs": {
@@ -64,7 +64,8 @@
                         "args": "string[]",
                         "label": "string",
                         "launchName": "string",
-                        "cwd": "string"
+                        "cwd": "string",
+                        "env": "string[]"
                     }
                 },
                 "shellLauncher.shells.linux": {
@@ -99,7 +100,8 @@
                         "args": "string[]",
                         "label": "string",
                         "launchName": "string",
-                        "cwd": "string"
+                        "cwd": "string",
+                        "env": "string[]"
                     }
                 },
                 "shellLauncher.shells.windows": {
@@ -128,7 +130,8 @@
                         "args": "string[]",
                         "label": "string",
                         "launchName": "string",
-                        "cwd": "string"
+                        "cwd": "string",
+                        "env": "string[]"
                     }
                 }
             }
