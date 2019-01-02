@@ -13,7 +13,7 @@
         "url": "https://github.com/Tyriar/vscode-shell-launcher"
     },
     "engines": {
-        "vscode": "^1.20.0"
+        "vscode": "^1.30.0"
     },
     "categories": [
         "Other"
@@ -142,13 +142,13 @@
         "watch": "tsc -watch -p ./",
         "build": "tsc -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+        "test": "mocha ./out/**/*.test.js"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
+        "@types/mocha": "^2.2.48",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "mocha": "^5.2.0",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
     }
 }
