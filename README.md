@@ -1,5 +1,7 @@
 # Shell Launcher
 
+[![Build Status](https://tyriar.visualstudio.com/vscode-shell-launcher/_apis/build/status/Tyriar.vscode-shell-launcher?branchName=master)](https://tyriar.visualstudio.com/vscode-shell-launcher/_build/latest?definitionId=3?branchName=master)
+
 Easily launch multiple shell configurations in the terminal.
 
 ![Shell launcher in action](images/quick-pick.png)
