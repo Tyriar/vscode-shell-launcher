@@ -15,16 +15,11 @@ steps:
     versionSpec: '8.x'
   displayName: 'Install Node.js'
 
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2
-  inputs:
-    versionSpec: "1.9.4"
-  displayName: 'Install Yarn'
-
-- script: yarn
+- script: npm ci
   displayName: 'Install dependencies'
 
-- script: yarn build
+- script: npm run build
   displayName: "Build"
 
-- script: yarn test
+- script: npm  test
   displayName: 'Run tests'
