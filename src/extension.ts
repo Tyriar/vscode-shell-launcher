@@ -4,6 +4,7 @@ import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
+import { resolveEnvironmentVariables } from './environment';
 
 interface ShellConfig {
     shell: string;
@@ -59,6 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
             placeHolder: 'Select the shell to launch'
         }
         const items: ShellQuickPickItem[] = shells.filter(s => {
+            s.shell = resolveEnvironmentVariables(s.shell, os.platform() === 'win32');
             // If the basename is the same assume it's being pulled from the PATH
             if (path.basename(s.shell) === s.shell) {
                 return true;
