@@ -53,18 +53,29 @@ function getShellDescription(shell: ShellConfig) {
     return `${shell.shell} ${shell.args.join(' ')}`;
 }
 
+function resolveShellVariables(shellConfig: ShellConfig): void {
+    const isWindows = os.platform() === 'win32';
+    shellConfig.shell = resolveEnvironmentVariables(shellConfig.shell, isWindows);
+    if (shellConfig.args) {
+        shellConfig.args.forEach((arg, i) => {
+            shellConfig.args[i] = resolveEnvironmentVariables(arg, isWindows);
+        });
+    }
+}
+
 export function activate(context: vscode.ExtensionContext) {
     const disposable = vscode.commands.registerCommand('shellLauncher.launch', () => {
         const shells = getShells();
+        shells.forEach(s => resolveShellVariables(s));
         const options: vscode.QuickPickOptions = {
             placeHolder: 'Select the shell to launch'
         }
         const items: ShellQuickPickItem[] = shells.filter(s => {
-            s.shell = resolveEnvironmentVariables(s.shell, os.platform() === 'win32');
             // If the basename is the same assume it's being pulled from the PATH
             if (path.basename(s.shell) === s.shell) {
                 return true;
             } 
+            // Only show the shell if the path exists
             try {
                 fs.accessSync(s.shell, fs.constants.R_OK | fs.constants.X_OK);
             } catch {
