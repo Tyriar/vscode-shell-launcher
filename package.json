@@ -21,7 +21,7 @@
     "activationEvents": [
         "onCommand:shellLauncher.launch"
     ],
-    "main": "./out/src/extension",
+    "main": "./out/extension",
     "contributes": {
         "commands": [
             {
