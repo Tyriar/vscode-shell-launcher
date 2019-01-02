@@ -64,7 +64,8 @@
                         "args": "string[]",
                         "label": "string",
                         "launchName": "string",
-                        "cwd": "string"
+                        "cwd": "string",
+                        "env": "string[]"
                     }
                 },
                 "shellLauncher.shells.linux": {
@@ -99,7 +100,8 @@
                         "args": "string[]",
                         "label": "string",
                         "launchName": "string",
-                        "cwd": "string"
+                        "cwd": "string",
+                        "env": "string[]"
                     }
                 },
                 "shellLauncher.shells.windows": {
@@ -128,7 +130,8 @@
                         "args": "string[]",
                         "label": "string",
                         "launchName": "string",
-                        "cwd": "string"
+                        "cwd": "string",
+                        "env": "string[]"
                     }
                 }
             }

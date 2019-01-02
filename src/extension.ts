@@ -11,6 +11,7 @@ interface ShellConfig {
     label?: string;
     launchName?: string;
     cwd?: string;
+    env?: { [key: string]: string | null; };
 }
 
 interface ShellLauncherConfig {
@@ -91,7 +92,8 @@ export function activate(context: vscode.ExtensionContext) {
                 cwd: shell.cwd,
                 name: shell.launchName,
                 shellPath: shell.shell,
-                shellArgs: shell.args
+                shellArgs: shell.args,
+                env: shell.env
             };
             const terminal = vscode.window.createTerminal(terminalOptions);
             terminal.show();
