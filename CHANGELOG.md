@@ -1,5 +1,18 @@
 # Change Log
 
+## 0.4.0
+
+- Support WoW64 path conversion (System32 -> SysWOW64) [#41](https://github.com/Tyriar/vscode-shell-launcher/pull/41) via [@jabalv](https://github.com/jabalv)
+- Update tar dev dependency [#42](https://github.com/Tyriar/vscode-shell-launcher/pull/42) via [@dependabot](https://github.com/dependabot)
+- Several updates to clean up repo [#44](https://github.com/Tyriar/vscode-shell-launcher/pull/44) via [@Tyriar](https://github.com/Tyriar)
+  - typescript@3.7
+  - @types/node@10
+  - Enable TS strict mode
+  - Move to @types/vscode over vscode
+  - Add lint
+  - Add GitHub action to release
+  - Move to yarn, remove package-lock.json
+
 ## 0.3.0
 
 - Added a `env` override option [#33](https://github.com/Tyriar/vscode-shell-launcher/pull/33) via [@DoctorJew](https://github.com/DoctorJew)
