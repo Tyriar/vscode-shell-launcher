@@ -1,5 +1,3 @@
-'use strict';
-
 import * as os from 'os';
 import * as process from 'process';
 import * as path from 'path';
@@ -7,7 +5,7 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 import { resolveEnvironmentVariables } from './environment';
 
-interface ShellConfig {
+interface IShellConfig {
     shell: string;
     args?: string[];
     label?: string;
@@ -16,20 +14,20 @@ interface ShellConfig {
     env?: { [key: string]: string | null; };
 }
 
-interface ShellLauncherConfig {
+interface IShellLauncherConfig {
     shells: {
-        linux: ShellConfig[];
-        osx: ShellConfig[];
-        windows: ShellConfig[];
+        linux: IShellConfig[];
+        osx: IShellConfig[];
+        windows: IShellConfig[];
     };
 }
 
-interface ShellQuickPickItem extends vscode.QuickPickItem {
-    _shell: ShellConfig;
+interface IShellQuickPickItem extends vscode.QuickPickItem {
+    _shell: IShellConfig;
 }
 
-function getShells(): ShellConfig[] {
-    const config = <ShellLauncherConfig>vscode.workspace.getConfiguration().get('shellLauncher');
+function getShells(): IShellConfig[] {
+    const config = <IShellLauncherConfig>vscode.workspace.getConfiguration().get('shellLauncher');
     const shells = config.shells;
     if (os.platform() === 'win32') {
         return shells.windows;
@@ -40,21 +38,21 @@ function getShells(): ShellConfig[] {
     return shells.linux;
 }
 
-function getShellLabel(shell: ShellConfig) {
+function getShellLabel(shell: IShellConfig): string {
     if (shell.label) {
         return shell.label;
     }
     return getShellDescription(shell);
 }
 
-function getShellDescription(shell: ShellConfig) {
+function getShellDescription(shell: IShellConfig): string {
     if (!shell.args || shell.args.length === 0) {
         return shell.shell;
     }
     return `${shell.shell} ${shell.args.join(' ')}`;
 }
 
-function resolveShellVariables(shellConfig: ShellConfig): void {
+function resolveShellVariables(shellConfig: IShellConfig): void {
     const isWindows = os.platform() === 'win32';
     shellConfig.shell = resolveEnvironmentVariables(shellConfig.shell, isWindows);
     if (shellConfig.args) {
@@ -64,18 +62,18 @@ function resolveShellVariables(shellConfig: ShellConfig): void {
     }
 }
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
     const disposable = vscode.commands.registerCommand('shellLauncher.launch', () => {
         const shells = getShells();
         shells.forEach(s => resolveShellVariables(s));
         const options: vscode.QuickPickOptions = {
             placeHolder: 'Select the shell to launch'
-        }
-        const items: ShellQuickPickItem[] = shells.filter(s => {
+        };
+        const items: IShellQuickPickItem[] = shells.filter(s => {
             // If the basename is the same assume it's being pulled from the PATH
             if (path.basename(s.shell) === s.shell) {
                 return true;
-            } 
+            }
             // Only show the shell if the path exists
             try {
                 // Sysnative virtual folder to access 64bit system System32 on 32bit vscode
@@ -114,4 +112,4 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);
 }
 
-export function deactivate() { }
+export function deactivate(): void { }

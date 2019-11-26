@@ -24,6 +24,7 @@ jobs:
         yarn compile
       env:
         CI: true
-    - name: Test
+    - name: Test and lint
       run: |
         yarn test
+        yarn lint
