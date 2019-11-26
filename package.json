@@ -13,7 +13,7 @@
         "url": "https://github.com/Tyriar/vscode-shell-launcher"
     },
     "engines": {
-        "vscode": "^1.30.0"
+        "vscode": "^1.39.0"
     },
     "categories": [
         "Other"
