@@ -12,14 +12,15 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '8.x'
+    versionSpec: '10.x'
   displayName: 'Install Node.js'
-
-- script: npm ci
+- task: YarnInstaller@3
+  inputs:
+    versionSpec: '1.x'
+  displayName: 'Install Yarn'
+- script: yarn
   displayName: 'Install dependencies'
-
-- script: npm run build
+- script: yarn build
   displayName: "Build"
-
-- script: npm  test
+- script: yarn test
   displayName: 'Run tests'
