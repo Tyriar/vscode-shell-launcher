@@ -79,8 +79,8 @@ export function activate(context: vscode.ExtensionContext) {
             // Only show the shell if the path exists
             try {
                 // Sysnative virtual folder to access 64bit system System32 on 32bit vscode
-                if (os.platform() === 'win32' && process.env.hasOwnProperty('PROCESSOR_ARCHITEW6432')){
-                    s.shell = s.shell.replace('System32', 'Sysnative')
+                if (os.platform() === 'win32' && process.env.hasOwnProperty('PROCESSOR_ARCHITEW6432')) {
+                    s.shell = s.shell.replace('System32', 'Sysnative');
                 }
                 fs.accessSync(s.shell, fs.constants.R_OK | fs.constants.X_OK);
             } catch {
