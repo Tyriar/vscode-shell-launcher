@@ -58,9 +58,9 @@ function resolveShellVariables(shellConfig: ShellConfig): void {
     const isWindows = os.platform() === 'win32';
     shellConfig.shell = resolveEnvironmentVariables(shellConfig.shell, isWindows);
     if (shellConfig.args) {
-        shellConfig.args.forEach((arg, i) => {
-            shellConfig.args[i] = resolveEnvironmentVariables(arg, isWindows);
-        });
+        for (let i = 0; i < shellConfig.args.length; i++) {
+            shellConfig.args[i] = resolveEnvironmentVariables(shellConfig.args[i], isWindows);
+        }
     }
 }
 
