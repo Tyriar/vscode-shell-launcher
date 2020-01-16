@@ -62,6 +62,18 @@ function resolveShellVariables(shellConfig: IShellConfig): void {
     }
 }
 
+function startShell(shell: IShellConfig): void {
+    const terminalOptions: vscode.TerminalOptions = {
+        cwd: shell.cwd,
+        name: shell.launchName,
+        shellPath: shell.shell,
+        shellArgs: shell.args,
+        env: shell.env
+    };
+    const terminal = vscode.window.createTerminal(terminalOptions);
+    terminal.show();
+}
+
 export function activate(context: vscode.ExtensionContext): void {
     const disposable = vscode.commands.registerCommand('shellLauncher.launch', () => {
         const shells = getShells();
@@ -92,21 +104,15 @@ export function activate(context: vscode.ExtensionContext): void {
                 _shell: s
             };
         });
-        vscode.window.showQuickPick(items, options).then(item => {
-            if (!item) {
-                return;
-            }
-            const shell = item._shell;
-            const terminalOptions: vscode.TerminalOptions = {
-                cwd: shell.cwd,
-                name: shell.launchName,
-                shellPath: shell.shell,
-                shellArgs: shell.args,
-                env: shell.env
-            };
-            const terminal = vscode.window.createTerminal(terminalOptions);
-            terminal.show();
-        });
+        if (1 === items.length) {
+            startShell(items[0]._shell);
+        } else {
+            vscode.window.showQuickPick(items, options).then(item => {
+                if (item) {
+                    startShell(item._shell);
+                }
+            });
+        }
     });
 
     context.subscriptions.push(disposable);
