@@ -104,7 +104,7 @@ export function activate(context: vscode.ExtensionContext): void {
                 _shell: s
             };
         });
-        if (1 === items.length) {
+        if (items.length === 1) {
             startShell(items[0]._shell);
         } else {
             vscode.window.showQuickPick(items, options).then(item => {
