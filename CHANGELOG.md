@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.4.1
+
+- When there is only a single shell launch config the quick pick will be skipped [#49](https://github.com/Tyriar/vscode-shell-launcher/pull/49) via [@Varstahl](https://github.com/Varstahl)
+
 ## 0.4.0
 
 - Support WoW64 path conversion (System32 -> SysWOW64) [#41](https://github.com/Tyriar/vscode-shell-launcher/pull/41) via [@jabalv](https://github.com/jabalv)
