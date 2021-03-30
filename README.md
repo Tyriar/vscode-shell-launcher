@@ -1,5 +1,7 @@
 # Shell Launcher
 
+⚠️ *This extension is now deprecated in favor of the builtin terminal profiles feature that landed in v1.55. Read more about it in the [release notes](https://code.visualstudio.com/updates/v1_55#_terminal-profiles). If you rely on features from this extension that aren't in profiles please create an issue against the [microsoft/vscode repo](https://github.com/microsoft/vscode/issues).*
+
 [![Build Status](https://tyriar.visualstudio.com/vscode-shell-launcher/_apis/build/status/Tyriar.vscode-shell-launcher?branchName=master)](https://tyriar.visualstudio.com/vscode-shell-launcher/_build/latest?definitionId=3?branchName=master)
 
 Easily launch multiple shell configurations in the terminal.
